@@ -21,19 +21,13 @@ A modern AI-powered trip planner web application that helps users plan their tri
 - **Styling**: Tailwind CSS
 - **CSV Export**: React-CSV for exporting trip data
 
-### Screenshots
 
-![Trip Planner](./assets/screenshots/landing.png)  
-*Home Page with Trip Planning Form*
-
-![Itinerary](./assets/screenshots/itinerary.png)  
-*Generated Trip Itinerary*
 
 ### How to Run Locally
 
 1. **Clone the repository**:
     ```bash
-    git clone https://github.com/yourusername/ai-trip-planner.git
+    git clone https://github.com/manyamkarthik/ai-trip-planner.git
     cd ai-trip-planner
     ```
 

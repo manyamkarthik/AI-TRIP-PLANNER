@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import imageData from '../imageData.json';
 import { toast } from "react-toastify";
 
-
 export const Hotels = ({ tripData }) => {
   let parsedTripData;
 
@@ -20,24 +19,21 @@ export const Hotels = ({ tripData }) => {
     return price.replace(/\s*-\s*/g, " - ");
   };
 
+  const getRandomHotelImage = () => {
+    const hotelImages = imageData.hotels;
+    const randomIndex = Math.floor(Math.random() * hotelImages.length);
+    return hotelImages[randomIndex];
+  };
+
   if (!parsedTripData || !parsedTripData.hotels) {
     return <p>No hotel data available</p>;
   }
 
-
-const getRandomHotelImage = () => {
-  const hotelImages = imageData.hotels;
-  const randomIndex = Math.floor(Math.random() * hotelImages.length);
-  return hotelImages[randomIndex];
-};
-
-
-
   return (
-    <div>
+    <div className="px-4 sm:px-0">
       <h2 className="font-bold mt-5 text-xl">Hotels Recommendation</h2>
 
-      <div className="my-3 grid grid-cols-2 md:grid-cols-3 xl:grid-cols-3 gap-4">
+      <div className="my-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {parsedTripData.hotels.map((item, index) => (
           <Link
             to={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
@@ -47,24 +43,27 @@ const getRandomHotelImage = () => {
             rel="noopener noreferrer"
             key={index}
           >
-            <div className="p-3 flex flex-col gap-3 hover:scale-105 transition-all cursor-pointer">
-              <img
-                className="rounded-xl object-cover w-full h-40"
-                src={item.hotel_image_url || "./placeholder.jpg"}
-                alt={item.HotelName}
-                about="hotels"
-                onError={(e) => {
-                  e.target.src = getRandomHotelImage();
-                }}
-              />
+            <div className="bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-200">
+              <div className="aspect-w-16 aspect-h-9">
+                <img
+                  className="rounded-t-xl w-full h-48 object-cover"
+                  src={item.hotel_image_url || "./placeholder.jpg"}
+                  alt={item.HotelName}
+                  onError={(e) => {
+                    e.target.src = getRandomHotelImage();
+                  }}
+                />
+              </div>
 
-              <div className="flex flex-col gap-2 h-full">
-                <h2 className="font-medium text-sm">{item.HotelName}</h2>
-                <h2 className="text-xs text-gray-500">
+              <div className="p-4 space-y-2">
+                <h2 className="font-medium text-base">{item.HotelName}</h2>
+                <p className="text-sm text-gray-500 line-clamp-2">
                   📍{item["Hotel address"]}
-                </h2>
-                <h2 className="text-sm">💰{formatPrice(item?.Price)}</h2>
-                <h2 className="text-sm">⭐{item.rating}</h2>
+                </p>
+                <div className="flex justify-between items-center">
+                  <span className="text-sm">💰{formatPrice(item?.Price)}</span>
+                  <span className="text-sm">⭐{item.rating}</span>
+                </div>
               </div>
             </div>
           </Link>

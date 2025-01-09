@@ -36,12 +36,9 @@ export const Iteranary = ({ tripData }) => {
             </p>
           </div>
 
-          {/* Apply Flexbox to the grid container */}
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
             {details.places.map((place, placeIndex) => (
-              <div key={placeIndex} className="flex"> {/* Add flex to the individual card container */}
-                <PlaceCardItem place={place} />
-              </div>
+              <PlaceCardItem key={placeIndex} place={place} />
             ))}
           </div>
         </div>

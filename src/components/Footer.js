@@ -45,7 +45,7 @@ export const Footer = () => {
             </li>
             <li>
               <a
-                href="https://www.linkedin.com/in/karthik-manyam"
+                href="https://www.linkedin.com/in/hari-karthik-manyam"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-gray-300"
